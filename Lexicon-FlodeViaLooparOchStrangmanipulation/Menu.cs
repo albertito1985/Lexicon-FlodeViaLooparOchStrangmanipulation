@@ -13,7 +13,9 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
         List<MenuOption> MenuOptionsList = new List<MenuOption> {
             new MenuOption ("Exit"),
             new MenuOption ("Check Customer"),
-            new MenuOption ("Check group")
+            new MenuOption ("Check group"),
+            new MenuOption ("Echo 10 times"),
+            new MenuOption ("Write the 3rd word")
         };
         
 
@@ -38,19 +40,26 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
         public bool ValidateAndExecuteOption(int choice)
         {
             bool exit = false;
-            if(choice == 0)
+            if(choice == MenuOptionsList[0].command)
             {
                 exit = true;
                 Console.WriteLine("Good Bye!");
             }
-            else if(choice == 1)
+            else if(choice == MenuOptionsList[1].command)
             {
-                
                 handleSingleCustomer(); //det finns en nästlad if-sats inom Utilities.NumberInput samt i constructorn till Client;
             }
-            else if(choice == 2)
+            else if(choice == MenuOptionsList[2].command)
             {
                 handleGroup();
+            }
+            else if(choice == MenuOptionsList[3].command)
+            {
+                handleEcho10Times();
+            }
+            else if (choice == MenuOptionsList[4].command)
+            {
+                handleRepeat3rdWord();
             }
             else
             {
@@ -60,11 +69,63 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             return exit;
         }
 
+        private void handleRepeat3rdWord()
+        {
+            bool validatedInput = false;
+            string input;
+            do
+            {
+                Console.WriteLine("");
+                Console.WriteLine("----------Write the 3rd word-----------");
+                Console.Write("Please enter more than 3 words: ");
+                input = Utilities.StringInput();
+                if (input != "invalid")
+                {
+                    var choppedInput = input.Split(" ");
+                    if (choppedInput.Length == 3)
+                    {
+                        validatedInput = true;
+                        Console.WriteLine($"3rd word: {choppedInput[2]}.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid number of words.");
+                    }
+                        
+                }
+            } while (!validatedInput);
+
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine("");
+        }
+
+        private void handleEcho10Times()
+        {
+            bool validatedInput = false;
+            Console.WriteLine("");
+            Console.WriteLine("-------------Echo 10 times--------------");
+
+            do {
+                Console.Write("Enter something: ");
+                string input = Utilities.StringInput();
+                if (input != "invalid")
+                {
+                    validatedInput = true;
+                    for (int i = 1; i <= 10; i++)
+                    {
+                        Console.Write($"{i}. {input}, ");
+                    }
+                }
+            } while (!validatedInput);
+            
+            Console.WriteLine("\n");
+        }
+
         private void handleGroup()
         {
             Console.WriteLine("");
             Console.WriteLine("-------------Check Group---------------");
-            Console.Write("How many persons are in the group? ");
+            Console.Write("How many persons are there in the group? ");
             int groupSize = Utilities.NumberInput();
             List<Client> clientList= new List<Client>();
             int totalPrice=0;
@@ -102,7 +163,11 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             do {
                 Console.Write("Please enter the age of the client: ");
                 age = Utilities.NumberInput();
-            } while (validatedAge);
+                if(age != -1)
+                { 
+                    validatedAge = true;
+                }
+            } while (!validatedAge);
             return new Client(age);
 
         }

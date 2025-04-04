@@ -18,5 +18,20 @@
                 return -1;
 
         }
+
+        public static string StringInput()
+        {
+            string input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input))
+            {
+                return input;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.");
+            }
+                return "invalid";
+
+        }
     }
 }

@@ -26,13 +26,21 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
         {
             switch (age)
             {
-                case < 20 and > 0:
+                case >= 0 and < 5:
+                    price = 0;
+                    priceType = "Free";
+                    break;
+                case >=5  and < 20:
                     price = 80;
                     priceType = "Youth";
                     break;
-                case > 64:
+                case >= 65 and < 100:
                     price = 90;
                     priceType = "Elderly";
+                    break;
+                case >= 100:
+                    price = 0;
+                    priceType = "Free";
                     break;
                 default:
                     priceType = "Standard";

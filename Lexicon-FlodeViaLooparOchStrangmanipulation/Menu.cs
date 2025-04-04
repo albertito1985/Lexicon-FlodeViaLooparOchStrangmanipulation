@@ -82,7 +82,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
                 if (input != "invalid")
                 {
                     var choppedInput = input.Split(" ");
-                    if (choppedInput.Length == 3)
+                    if (choppedInput.Length >= 3)
                     {
                         validatedInput = true;
                         Console.WriteLine($"3rd word: {choppedInput[2]}.");

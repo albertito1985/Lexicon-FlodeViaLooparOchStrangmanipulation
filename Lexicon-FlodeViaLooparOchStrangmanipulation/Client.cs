@@ -13,7 +13,6 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
         private int price;
         private string priceType;
 
-        public int Age { get { return age; }}
         public int Price { get { return price; }}
         public string PriceType { get { return priceType; }}
 

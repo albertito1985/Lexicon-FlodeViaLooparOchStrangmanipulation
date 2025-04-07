@@ -8,18 +8,18 @@ using Lexicon_FlodeViaLooparOchstrangmanipulation.Helpers;
 
 namespace Lexicon_FlodeViaLooparOchStrangmanipulation
 {
-    public class Menu
+    static public class Menu
     {
-        List<MenuOption> MenuOptionsList = new List<MenuOption> {
+        static List<MenuOption> MenuOptionsList = new List<MenuOption> {
             new MenuOption ("Exit"),
             new MenuOption ("Check Customer"),
             new MenuOption ("Check group"),
             new MenuOption ("Echo 10 times"),
             new MenuOption ("Write the 3rd word")
         };
-        
 
-        public void ShowMenu()
+
+        static public void ShowMenu()
         {
             Console.WriteLine("---------------Main Menu---------------");
             foreach (MenuOption option in MenuOptionsList)
@@ -30,14 +30,14 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             Console.WriteLine("---------------------------------------");
         }
 
-        public int PromptOptionChoice()
+        static public int PromptOptionChoice()
         {
             Console.WriteLine("Type the number of the option you want to follow.");
             Console.Write("Option: ");
             return Utilities.NumberInput();
         }
 
-        public bool ValidateAndExecuteOption(int choice)
+        static public bool ValidateAndExecuteOption(int choice)
         {
             bool exit = false;
             if(choice == MenuOptionsList[0].command)
@@ -69,7 +69,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             return exit;
         }
 
-        private void handleRepeat3rdWord()
+        static private void handleRepeat3rdWord()
         {
             bool validatedInput = false;
             string input;
@@ -99,7 +99,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             Console.WriteLine("");
         }
 
-        private void handleEcho10Times()
+        static private void handleEcho10Times()
         {
             bool validatedInput = false;
             Console.WriteLine("");
@@ -121,7 +121,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             Console.WriteLine("\n");
         }
 
-        private void handleGroup()
+        static private void handleGroup()
         {
             Console.WriteLine("");
             Console.WriteLine("-------------Check Group---------------");
@@ -146,7 +146,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
 
         }
 
-        private void handleSingleCustomer()
+        static private void handleSingleCustomer()
         {
             Console.WriteLine("");
             Console.WriteLine("-------------Check Customer------------");
@@ -156,7 +156,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             Console.WriteLine("");
         }
 
-        public Client CreateClient()
+        static public Client CreateClient()
         {
             int age;
             bool validatedAge = false;

@@ -8,13 +8,12 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
         {
             int choice;
             bool exit = false;
-            Menu mainMenu = new Menu();
 
             do
             {
-                mainMenu.ShowMenu();
-                choice = mainMenu.PromptOptionChoice();
-                exit = mainMenu.ValidateAndExecuteOption(choice);
+                Menu.ShowMenu();
+                choice = Menu.PromptOptionChoice();
+                exit = Menu.ValidateAndExecuteOption(choice);
             } while (!exit);
         }
     }

@@ -10,66 +10,23 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
 {
     static public class Menu
     {
-        static List<MenuOption> MenuOptionsList = new List<MenuOption> {
-            new MenuOption ("Exit"),
-            new MenuOption ("Check Customer"),
-            new MenuOption ("Check group"),
-            new MenuOption ("Echo 10 times"),
-            new MenuOption ("Write the 3rd word")
+        //public delegate bool MenuHandler();
+
+        
+        static  public List<MenuOption> MenuOptionsList = new List<MenuOption> {
+            new MenuOption ("Exit", HandleExit),
+            new MenuOption ("Check Customer", HandleSingleCustomer),
+            new MenuOption ("Check group", HandleGroup),
+            new MenuOption ("Echo 10 times",HandleEcho10Times),
+            new MenuOption ("Write the 3rd word",HandleRepeat3rdWord)
         };
 
-
-        static public void ShowMenu()
+        static public bool HandleExit()
         {
-            Console.WriteLine("---------------Main Menu---------------");
-            foreach (MenuOption option in MenuOptionsList)
-            {
-                Console.WriteLine($"{option.command}: {option.description}");
-
-            }
-            Console.WriteLine("---------------------------------------");
+            return true;
         }
 
-        static public int PromptOptionChoice()
-        {
-            Console.WriteLine("Type the number of the option you want to follow.");
-            Console.Write("Option: ");
-            return Utilities.NumberInput();
-        }
-
-        static public bool ValidateAndExecuteOption(int choice)
-        {
-            bool exit = false;
-            if(choice == MenuOptionsList[0].command)
-            {
-                exit = true;
-                Console.WriteLine("Good Bye!");
-            }
-            else if(choice == MenuOptionsList[1].command)
-            {
-                handleSingleCustomer(); //det finns en nästlad if-sats inom Utilities.NumberInput samt i constructorn till Client;
-            }
-            else if(choice == MenuOptionsList[2].command)
-            {
-                handleGroup();
-            }
-            else if(choice == MenuOptionsList[3].command)
-            {
-                handleEcho10Times();
-            }
-            else if (choice == MenuOptionsList[4].command)
-            {
-                handleRepeat3rdWord();
-            }
-            else
-            {
-                Console.WriteLine("Invalid Input");
-                Console.WriteLine("");
-            }
-            return exit;
-        }
-
-        static private void handleRepeat3rdWord()
+        static public bool HandleRepeat3rdWord()
         {
             bool validatedInput = false;
             string input;
@@ -97,9 +54,11 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
 
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("");
+
+            return false;
         }
 
-        static private void handleEcho10Times()
+        static public bool HandleEcho10Times()
         {
             bool validatedInput = false;
             Console.WriteLine("");
@@ -119,9 +78,10 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             } while (!validatedInput);
             
             Console.WriteLine("\n");
+            return false;
         }
 
-        static private void handleGroup()
+        static public bool HandleGroup()
         {
             Console.WriteLine("");
             Console.WriteLine("-------------Check Group---------------");
@@ -144,9 +104,10 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("");
 
+            return false;
         }
 
-        static private void handleSingleCustomer()
+        static public bool HandleSingleCustomer()
         {
             Console.WriteLine("");
             Console.WriteLine("-------------Check Customer------------");
@@ -154,6 +115,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
             Console.WriteLine($"{newClient.PriceType} price: {newClient.Price}Kr");
             Console.WriteLine("---------------------------------------");
             Console.WriteLine("");
+            return false;
         }
 
         static public Client CreateClient()

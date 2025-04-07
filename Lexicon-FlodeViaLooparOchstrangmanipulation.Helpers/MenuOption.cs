@@ -10,10 +10,7 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
     public class MenuOption
     {
         static int inputCount = 0;
-        public delegate void HandlerFunction();
-        //public int command;
-        //public string description;
-        //public HandlerFunction handler;
+        public delegate bool HandlerFunction();
 
         public int Command { get; set; }
         public string Description{ get; set; }

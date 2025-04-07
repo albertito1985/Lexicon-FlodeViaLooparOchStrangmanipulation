@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using Lexicon_FlodeViaLooparOchstrangmanipulation.Helpers;
 
 namespace Lexicon_FlodeViaLooparOchStrangmanipulation
 {
@@ -8,12 +9,13 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
         {
             int choice;
             bool exit = false;
+            MenuHelper programMenu = new(Menu.MenuOptionsList);
 
             do
             {
-                Menu.ShowMenu();
-                choice = Menu.PromptOptionChoice();
-                exit = Menu.ValidateAndExecuteOption(choice);
+                programMenu.ShowMenu();
+                choice = programMenu.PromptOptionChoice();
+                exit = programMenu.ValidateAndExecuteOption(choice);
             } while (!exit);
         }
     }

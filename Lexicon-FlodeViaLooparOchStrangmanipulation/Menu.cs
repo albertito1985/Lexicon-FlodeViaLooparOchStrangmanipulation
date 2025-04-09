@@ -131,9 +131,6 @@ namespace Lexicon_FlodeViaLooparOchStrangmanipulation
                 }
             } while (!validatedAge);
             return new Client(age);
-
         }
-
-
     }
 }

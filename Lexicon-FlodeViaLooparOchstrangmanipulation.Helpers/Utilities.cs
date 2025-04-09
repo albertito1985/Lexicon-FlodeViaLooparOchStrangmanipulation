@@ -14,9 +14,7 @@
             {
                 Console.WriteLine("Your input is not a number. ");
             }
-
                 return -1;
-
         }
 
         public static string StringInput()
